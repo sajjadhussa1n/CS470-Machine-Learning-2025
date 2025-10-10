@@ -47,7 +47,14 @@ Traditionally, programmers write explicit rules to solve a problem. But for many
 In short, ML shifts the paradigm from **rule-based programming** to **data-driven learning**.
 
 ![](./images/traditional_approach.png)
+
+*Figure 1: In traditional programming, data and manually defined rules are combined to produce decisions or outputs.*
+
 ![](./images/ml_approach.png)
+
+*Figure 2: In machine learning, data and known decisions (labels) are provided to a learning algorithm to produce a model that can generalize to new data.*
+
+**Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
 
 ---
 ### When to Use Machine Learning
