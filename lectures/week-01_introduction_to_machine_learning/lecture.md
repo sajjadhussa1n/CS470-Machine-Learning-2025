@@ -85,9 +85,9 @@ and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
 ![](./images/supervised.png)
 
-*Figure 3: Supervised Learning.*
+*Figure 3: Supervised Learning\**
 
-**Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
+**\*Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
 
 **Examples:**
 - Predicting house prices (Regression)
