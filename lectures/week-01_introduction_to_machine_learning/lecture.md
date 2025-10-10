@@ -46,13 +46,28 @@ Traditionally, programmers write explicit rules to solve a problem. But for many
 
 In short, ML shifts the paradigm from **rule-based programming** to **data-driven learning**.
 
+![](figures/traditional_approach.png)
+![](figures/ml_approach.png)
+
+---
+### When to Use Machine Learning
+
+Machine learning excels when:
+- Rules are difficult to define or maintain manually (e.g., **spam filtering**).
+- The problem is inherently complex (e.g., **speech recognition**).
+- The system must **adapt to changing environments** or new data.
+- We want to **extract insights from large datasets**, beyond human analytical capacity.
+
+If a task involves pattern recognition, probabilistic decision-making, or adapting to new data, ML is often the right choice.
+
 ---
 
-### 4. Types of Machine Learning
+
+### Types of Machine Learning
 
 Machine Learning can be broadly categorized based on the type of feedback available from the data.
 
-#### 4.1 Supervised Learning
+#### Supervised Learning
 
 In **supervised learning**, we have both input features (**X**) and target outputs (**Y**).  
 The model learns a mapping function:  
@@ -61,16 +76,33 @@ f: X \rightarrow Y
 \]
 and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
+![](figures/supervised.png)
+
 **Examples:**
 - Predicting house prices (Regression)
 - Email spam detection (Classification)
 
 **Algorithms:** Linear Regression, Logistic Regression, Decision Trees, Support Vector Machines, Neural Networks.
 
-#### 4.2 Unsupervised Learning
+##### Classification vs Regression
+
+Supervised learning can be divided into **classification** and **regression** problems.
+
+| Classification | Regression |
+|----------------|-------------|
+| Predicts **discrete classes** (e.g., spam/not spam) | Predicts **continuous numeric values** (e.g., house prices) |
+| Output is a **label** | Output is a **real number** |
+| Example tasks: Spam detection, Image classification, Disease diagnosis | Example tasks: Price prediction, Temperature forecasting, Stock value estimation |
+| Evaluation metrics: Accuracy, Precision, Recall, F1-score | Evaluation metrics: MSE, RMSE, MAE, R² |
+
+Both are forms of **supervised learning** since they rely on labeled training data.
+
+#### Unsupervised Learning
 
 Here, only the inputs \( X \) are available — no labeled outputs.  
 The goal is to **discover hidden structures or patterns** within the data.
+
+![](figures/unsupervised.png)
 
 **Examples:**
 - Grouping customers by purchase behavior (Clustering)
@@ -78,16 +110,26 @@ The goal is to **discover hidden structures or patterns** within the data.
 
 **Algorithms:** K-Means, DBSCAN, PCA, Autoencoders.
 
-#### 4.3 Semi-Supervised Learning
+#### Semi-Supervised Learning
 
 A combination of labeled and unlabeled data. Often used when labeling is expensive but large amounts of unlabeled data are available.
 
+![](figures/semisupervised.png)
+
 **Example:** Training a face recognition model using a small set of labeled faces and many unlabeled ones.
 
-#### 4.4 Reinforcement Learning
+#### Reinforcement Learning
 
 In this paradigm, an **agent** learns by interacting with an environment.  
 It takes actions, receives rewards or penalties, and gradually learns a policy that maximizes cumulative rewards.
+
+![](figures/reinforcement.png)
+
+Key terms:
+- **Agent:** The learner or decision-maker.
+- **Environment:** Everything the agent interacts with.
+- **Policy:** Strategy used to determine the next action.
+- **Reward:** Feedback signal for success or failure.
 
 **Examples:**
 - Game playing (AlphaGo)
@@ -96,7 +138,7 @@ It takes actions, receives rewards or penalties, and gradually learns a policy t
 
 ---
 
-### 5. Key Terminology
+### Key Terminology
 
 Understanding some fundamental terms is crucial before diving deeper.
 
@@ -139,62 +181,152 @@ This separation ensures that the model does not “memorize” the training data
 
 ---
 
-### 8. Underfitting and Overfitting
+## Example Datasets
 
-A model should strike a balance between **simplicity** and **complexity**.
-
-- **Underfitting:** The model is too simple to capture the underlying trend (e.g., a straight line fitted to a nonlinear curve).  
-- **Overfitting:** The model is too complex and fits even the noise in training data, failing to generalize.
-
-Visual intuition:
-
-![Overfitting and Underfitting](../../assets/overfit_underfit.png)
-
-To handle this:
-- Use **regularization** to penalize complexity.
-- Apply **cross-validation**.
-- Gather **more training data**.
-- Simplify the model or reduce the number of features.
+- **Supervised:** Housing prices, sentiment analysis, image classification  
+- **Unsupervised:** Customer segmentation, topic modeling in news articles  
+- **Reinforcement:** Game simulations, robotic navigation  
 
 ---
 
-### 9. Evaluating Performance
+## Challenges in Machine Learning
 
-Depending on the problem type:
-
-- **Regression Tasks:** Mean Squared Error (MSE), Root Mean Squared Error (RMSE), \( R^2 \)
-- **Classification Tasks:** Accuracy, Precision, Recall, F1-score, ROC-AUC
-
-Each metric reveals different aspects of model performance. We will study these in detail in later lectures.
+Building a successful ML system involves more than just choosing an algorithm. Data quality, representativeness, and model complexity all play critical roles.
 
 ---
 
-### 10. Ethical Considerations in Machine Learning
+### Insufficient Quantity of Training Data
 
-Machine Learning is powerful — but with great power comes responsibility.
+ML algorithms require large, diverse datasets to generalize well.  
+Simple tasks may require thousands of examples, while complex ones (like speech recognition) may need millions.
 
-Bias in data or algorithms can lead to **unfair, discriminatory**, or **unsafe outcomes**.  
-Examples include facial recognition systems performing poorly on certain demographics or recommendation algorithms amplifying misinformation.
+![](figures/dataset_size.png)
 
-As ML engineers and researchers, we must:
-- Ensure **fairness** and **transparency**.
-- Respect **privacy**.
-- Evaluate **societal impact**.
-
-Ethical ML is not optional — it’s integral to building trustworthy AI systems.
+A Microsoft study demonstrated that even simple models can perform well on difficult tasks when trained with large amounts of high-quality data — reinforcing the idea that **data often matters more than algorithms**.
 
 ---
 
-### 11. Summary
+### Non-Representative Training Data
 
-In this first week, we explored:
-- What Machine Learning is and how it differs from traditional programming.  
-- Key types of learning: supervised, unsupervised, semi-supervised, and reinforcement.  
-- The ML pipeline and terminology.  
-- Concepts of training, testing, underfitting, and overfitting.  
-- The importance of ethics in ML.
+If the training data doesn’t reflect the real-world cases we aim to predict, the model will fail to generalize.
 
-You are now ready to move on to **Week-02**, where we’ll dive into the mathematics and intuition behind **Linear Regression** — one of the simplest yet most important models in supervised learning.
+- **Sampling Noise:** Random variability due to small datasets.  
+- **Sampling Bias:** Systematic errors introduced by flawed sampling methods.
+
+Example: In the 1936 U.S. election, *Literary Digest* incorrectly predicted a Republican win because their survey disproportionately sampled wealthy individuals. The actual winner, Franklin D. Roosevelt (Democrat), won by a landslide.
+
+---
+
+### Poor-Quality Data
+
+Noisy, inconsistent, or incomplete data can degrade model performance.
+
+Typical remedies include:
+- Removing or correcting outliers.  
+- Handling missing values through imputation (e.g., mean or median).  
+- Dropping features or instances that lack reliable information.
+
+Data cleaning and preprocessing often consume a large portion of an ML practitioner’s time.
+
+---
+
+### Irrelevant Features
+
+The quality of a model’s input features largely determines its success.  
+“**Garbage in, garbage out**” aptly summarizes this.
+
+Good **feature engineering** involves:
+- **Feature selection:** Identifying the most useful existing features.  
+- **Feature extraction:** Transforming or combining features (e.g., PCA).  
+- **Feature creation:** Deriving new meaningful variables.
+
+---
+
+### Overfitting the Training Data
+
+**Overfitting** occurs when the model learns the training data too well—including its noise and anomalies—resulting in poor performance on unseen data.
+
+![](figures/over_fitting.png)
+
+Overfitting usually arises from:
+- Models that are too complex.
+- Small or noisy datasets.
+
+---
+
+### Preventing Overfitting
+
+To reduce overfitting:
+- **Simplify the model:** Use fewer parameters or apply regularization.  
+- **Improve data quality:** Gather more diverse samples and remove noise.  
+- **Apply regularization:** Penalize overly complex models to keep weights small.
+
+Regularization introduces a **hyperparameter** that controls the strength of the penalty, balancing model flexibility and generalization.
+
+---
+
+### Underfitting the Training Data
+
+**Underfitting** happens when the model is too simple to capture the underlying data structure.  
+This leads to poor performance even on the training set.
+
+To fix underfitting:
+- Use more expressive models (e.g., add polynomial terms).  
+- Provide richer features.  
+- Reduce constraints (less regularization).
+
+---
+
+### Testing and Validating Models
+
+To assess how well a model generalizes to new data, we divide the available data into:
+- **Training set:** Used for learning parameters.  
+- **Test set:** Used for final evaluation.
+
+If the model performs well on training but poorly on test data → **overfitting**.  
+Typical split: 80% training, 20% testing (though it depends on dataset size).
+
+---
+
+### Hyperparameter Tuning and Model Selection
+
+Using the test set to repeatedly adjust model parameters can lead to **test set overfitting**.  
+To avoid this, we use:
+
+- **Holdout validation:** Split into training, validation, and test sets.  
+- **Cross-validation:** Train and evaluate across multiple folds of the dataset to obtain a more reliable estimate of model performance.
+
+These methods help identify the best model configuration before final testing.
+
+---
+
+### No Free Lunch Theorem
+
+The **No Free Lunch (NFL)** theorem, proposed by David Wolpert (1996), states that:
+
+> No single learning algorithm performs best for every problem.
+
+Each model makes assumptions about the data. For example, linear models assume linear relationships, while neural networks can represent more complex, nonlinear structures.  
+Thus, the best algorithm depends entirely on the specific dataset and problem context.
+
+In practice:
+- Make reasonable assumptions about your data.
+- Experiment with multiple models.
+- Use validation to guide model choice.
+
+---
+
+## Summary of Week 1
+
+This week, we learned:
+- The foundations and definitions of machine learning.
+- The distinctions among supervised, unsupervised, semi-supervised, and reinforcement learning.
+- Key challenges including data quality, overfitting, and underfitting.
+- Model evaluation through data splitting and validation.
+- The importance of assumptions in model selection, as stated by the No Free Lunch theorem.
+
+**Takeaway:**  
+> Successful machine learning is built on high-quality data, thoughtfully designed models, and rigorous evaluation practices.
 
 ---
 
