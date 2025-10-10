@@ -1,312 +1,206 @@
-### Week 1 — Introduction to Machine Learning  
-
-> **Note:** Many graphics and figures used in this course are adapted from  
-> *Aurélien Géron, Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow* (O’Reilly Media).
+# CS470: Machine Learning  
+## Week 01 — Introduction to Machine Learning  
 
 ---
 
-### What is Machine Learning?
+### 1. Introduction and Motivation
 
-> *"Field of study that gives computers the ability to learn without being explicitly programmed."* — **Arthur Samuel (1959)**
+Machine Learning (ML) is one of the most transformative fields in computer science today. It allows computers to **learn patterns from data** and **make predictions or decisions** without being explicitly programmed for each possible situation.
 
-> *"A computer program is said to learn from experience E with respect to some task T and some performance measure P,  
-if its performance on T, as measured by P, improves with experience E."* — **Tom Mitchell (1997)**
+Think of everyday examples:
+- Your email automatically categorizes messages as spam or not.
+- Streaming platforms like Netflix or Spotify recommend movies or songs.
+- Banks detect fraudulent transactions in real-time.
+- Self-driving cars identify pedestrians and traffic signs from camera feeds.
 
-In essence:
-- Machine Learning (ML) focuses on **building models that generalize** from data.
-- Instead of hardcoding rules, we **teach the system to learn from examples**.
+All of these are powered by machine learning algorithms trained to recognize complex relationships between inputs and outputs.
 
----
-
-### Traditional Programming vs Machine Learning
-
-| **Traditional Programming** | **Machine Learning** |
-|-----------------------------|----------------------|
-| Hand-coded logic | Learns patterns automatically |
-| Works well for deterministic, rule-based tasks | Excels at complex or fuzzy problems |
-
-**Visual Comparison:**
-
-|  |  |
-|--|--|
-| ![Traditional Programming](./images/traditional_approach.png) | ![Machine Learning](./images/ml_approach.png) |
-
-> Traditional programming: Rules + Data → Output  
-> Machine Learning: Data + Output → Rules (Model)
+At its core, ML is about building systems that **improve with experience** — much like humans. The more data they see, the better they perform.
 
 ---
 
-### When to Use Machine Learning
+### 2. What Is Machine Learning?
 
-Use ML when:
-- Manual rule-writing is **tedious or unreliable** (e.g., spam filtering)  
-- The problem has **no known algorithmic solution** (e.g., speech recognition)  
-- The environment is **dynamic** and must adapt (e.g., stock prices, weather)  
-- You want to **discover insights** from complex data (e.g., healthcare analytics)
+Tom Mitchell (1997) gave one of the most widely accepted definitions:
 
----
+> **A computer program is said to learn from experience (E) with respect to some class of tasks (T) and performance measure (P), if its performance at tasks in T, as measured by P, improves with experience E.**
 
-### Real-World Applications
+Let’s break it down:
+- **Task (T):** What the system is trying to do (e.g., classify emails as spam/not spam).
+- **Experience (E):** The data the system learns from (e.g., thousands of labeled emails).
+- **Performance (P):** How success is measured (e.g., accuracy or F1-score).
 
-- Email spam filtering  
-- Movie/music recommendation (Netflix, YouTube)  
-- Medical diagnosis and drug discovery  
-- Self-driving cars and robotics  
+A spam filter, for example, improves its ability to detect spam the more emails it processes and learns from.
 
 ---
 
-## Types of Machine Learning
+### 3. Why Machine Learning?
 
-Machine Learning algorithms can be grouped into several broad categories:
+Traditionally, programmers write explicit rules to solve a problem. But for many tasks — like recognizing speech or handwriting — **rules are too complex or numerous to define manually**. ML automates this process by learning from examples instead.
 
----
+| Traditional Programming | Machine Learning |
+|--------------------------|------------------|
+| Programmer defines the rules | Model learns rules from data |
+| Deterministic behavior | Probabilistic, data-driven behavior |
+| Example: Sorting numbers | Example: Image recognition |
 
-### 1️⃣ Supervised Learning
-
-In **supervised learning**, training data includes the **correct answers (labels)**.  
-The algorithm learns to map inputs → outputs.
-
-Common supervised algorithms:
-- k-Nearest Neighbors  
-- Linear & Logistic Regression  
-- Support Vector Machines (SVMs)  
-- Decision Trees & Random Forests  
-- Neural Networks
-
-![Supervised Learning](./images/supervised.png)
+In short, ML shifts the paradigm from **rule-based programming** to **data-driven learning**.
 
 ---
 
-### Classification vs Regression
+### 4. Types of Machine Learning
 
-| **Classification** | **Regression** |
-|---------------------|----------------|
-| Predicts **discrete categories/classes** | Predicts **continuous values** |
-| Output: **Label** | Output: **Real number** |
-| Examples: Spam vs Not-Spam, Cat vs Dog, Disease +/– | Examples: House price, Temperature, Stock price |
-| Metrics: Accuracy, Precision, Recall, F1 | Metrics: MSE, RMSE, MAE, R² |
+Machine Learning can be broadly categorized based on the type of feedback available from the data.
 
-> Both are forms of **Supervised Learning**, where data includes labeled examples.
+#### 4.1 Supervised Learning
 
----
+In **supervised learning**, we have both input features (**X**) and target outputs (**Y**).  
+The model learns a mapping function:  
+\[
+f: X \rightarrow Y
+\]
+and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
-### 2️⃣ Unsupervised Learning
+**Examples:**
+- Predicting house prices (Regression)
+- Email spam detection (Classification)
 
-- Works with **unlabeled data**.  
-- The goal is to find **hidden patterns or structures**.
+**Algorithms:** Linear Regression, Logistic Regression, Decision Trees, Support Vector Machines, Neural Networks.
 
-Common techniques:
-- **Clustering:** Grouping similar data points  
-- **Anomaly detection:** Identifying unusual cases  
-- **Dimensionality reduction:** PCA, t-SNE  
-- **Association rule learning**
+#### 4.2 Unsupervised Learning
 
-![Unsupervised Learning](./images/unsupervised.png)
+Here, only the inputs \( X \) are available — no labeled outputs.  
+The goal is to **discover hidden structures or patterns** within the data.
 
----
+**Examples:**
+- Grouping customers by purchase behavior (Clustering)
+- Reducing dimensionality for visualization (PCA)
 
-### 3️⃣ Semi-Supervised Learning
+**Algorithms:** K-Means, DBSCAN, PCA, Autoencoders.
 
-- Mix of **labeled and unlabeled data**  
-- Uses a small labeled subset to label larger unlabeled portions  
-- Often used in:
-  - Google Photos auto-tagging  
-  - News article categorization  
+#### 4.3 Semi-Supervised Learning
 
-![Semi-Supervised Learning](./images/semisupervised.png)
+A combination of labeled and unlabeled data. Often used when labeling is expensive but large amounts of unlabeled data are available.
 
----
+**Example:** Training a face recognition model using a small set of labeled faces and many unlabeled ones.
 
-### 4️⃣ Reinforcement Learning
+#### 4.4 Reinforcement Learning
 
-- Involves an **agent** that learns by interacting with an **environment**.
-- The agent:
-  - Takes actions  
-  - Receives rewards or penalties  
-  - Learns a policy to **maximize total reward over time**
+In this paradigm, an **agent** learns by interacting with an environment.  
+It takes actions, receives rewards or penalties, and gradually learns a policy that maximizes cumulative rewards.
 
-Examples:  
-Robotic control, Game playing (e.g., AlphaGo)
-
-![Reinforcement Learning](./images/reinforcement.png)
+**Examples:**
+- Game playing (AlphaGo)
+- Robotics control
+- Traffic light optimization
 
 ---
 
-### Example Datasets
+### 5. Key Terminology
 
-| Type | Example Applications |
-|------|----------------------|
-| Supervised | Housing prices, Image classification |
-| Unsupervised | Customer segmentation, Topic modeling |
-| Reinforcement | Game playing, Autonomous vehicles |
+Understanding some fundamental terms is crucial before diving deeper.
 
----
-
-## Challenges in Machine Learning
-
-### 1️⃣ Insufficient Quantity of Training Data
-
-- ML models require **large datasets** to perform well.
-- Complex tasks (e.g., speech recognition) may need **millions** of examples.
-- A Microsoft study showed that simple models can outperform complex ones if trained on huge datasets.
-
-![Dataset Size](./images/dataset_size.png)
-*Figure: Importance of Data vs Algorithms*
+| Term | Meaning |
+|------|----------|
+| **Instance / Example** | A single data point (e.g., one email or one image) |
+| **Feature / Attribute** | A measurable property of an instance (e.g., word frequency, pixel value) |
+| **Label / Target** | The outcome we want to predict |
+| **Training Set** | Data used to train the model |
+| **Test Set** | Data used to evaluate the model |
+| **Model Parameters** | The internal values (weights) the algorithm learns |
+| **Hyperparameters** | External settings chosen before training (e.g., learning rate, number of trees) |
 
 ---
 
-### 2️⃣ Non-Representative Training Data
+### 6. The Machine Learning Pipeline
 
-To generalize well:
-- Training data must **reflect real-world cases**.
-- Problems:
-  - **Sampling noise:** Too few samples  
-  - **Sampling bias:** Poorly collected or biased data
+The overall workflow of an ML project generally follows these steps:
 
-**Example:**  
-The 1936 U.S. election poll by *Literary Digest* predicted a Republican win — but only surveyed wealthy people.  
-FDR (Democrat) won by a landslide.
-
----
-
-### 3️⃣ Poor-Quality Data
-
-If data contains **errors, outliers, or noise**, the model learns the wrong patterns.
-
-**Data Cleaning Techniques:**
-- Remove or correct outliers  
-- Handle missing values:
-  - Drop missing samples
-  - Fill with median/mean
-  - Build separate models
-
-> Data cleaning can take up **80% of total ML time** — it’s crucial!
+1. **Data Collection:** Gather data from sensors, databases, or APIs.
+2. **Data Cleaning & Preprocessing:** Handle missing values, normalize scales, and encode categorical variables.
+3. **Feature Engineering:** Select or create relevant features to represent the problem.
+4. **Model Selection:** Choose an appropriate algorithm (e.g., linear regression, neural network).
+5. **Training:** Optimize model parameters to minimize a loss function.
+6. **Evaluation:** Assess performance using metrics like accuracy, precision, or RMSE.
+7. **Deployment:** Integrate the trained model into an application or system.
+8. **Monitoring:** Track model performance and retrain as needed.
 
 ---
 
-### 4️⃣ Irrelevant Features
+### 7. Training and Testing Paradigm
 
-> Garbage in, garbage out.
+A fundamental principle in ML is to **train on one set of data** and **test on another**.
 
-A good model depends on relevant, meaningful features.
+- **Training Set:** Used to learn model parameters.
+- **Validation Set:** Used to tune hyperparameters and prevent overfitting.
+- **Test Set:** Used only once, to evaluate generalization performance.
 
-**Feature Engineering involves:**
-- **Feature selection:** Keeping useful variables  
-- **Feature extraction:** Combining or transforming features (e.g., PCA)  
-- **Creating new features:** Deriving new signals or variables  
-
----
-
-### 5️⃣ Overfitting the Training Data
-
-**Overfitting:**  
-Model performs well on training data but fails on unseen data.
-
-- Occurs when the model is **too complex**
-- Learns **noise instead of signal**
-- Generalization suffers
-
-![Overfitting Example](./images/over_fitting.png)
-*Figure: Model fitting noise instead of true pattern*
+This separation ensures that the model does not “memorize” the training data and can perform well on unseen examples.
 
 ---
 
-### Preventing Overfitting
+### 8. Underfitting and Overfitting
 
-**Simplify the model:**
-- Use fewer parameters or simpler models
-- Reduce number of features
-- Add regularization (penalize complexity)
+A model should strike a balance between **simplicity** and **complexity**.
 
-**Improve the data:**
-- Gather more data
-- Remove noise/outliers
+- **Underfitting:** The model is too simple to capture the underlying trend (e.g., a straight line fitted to a nonlinear curve).  
+- **Overfitting:** The model is too complex and fits even the noise in training data, failing to generalize.
 
-**Regularization:**
-- Adds a penalty to model weights
-- Balances model complexity and data fit
-- Controlled by a **hyperparameter**
+Visual intuition:
 
----
+![Overfitting and Underfitting](../../assets/overfit_underfit.png)
 
-### 6️⃣ Underfitting the Data
-
-**Underfitting:**  
-Model is too simple to capture the data’s structure.
-
-Symptoms:
-- High training and test error
-- Model fails to learn patterns
-
-**Fixes:**
-- Use more powerful models
-- Engineer better features
-- Reduce regularization
+To handle this:
+- Use **regularization** to penalize complexity.
+- Apply **cross-validation**.
+- Gather **more training data**.
+- Simplify the model or reduce the number of features.
 
 ---
 
-### 7️⃣ Testing and Validating Models
+### 9. Evaluating Performance
 
-To evaluate generalization:
-- Split data into:
-  - **Training set** (e.g., 80%)
-  - **Test set** (e.g., 20%)
+Depending on the problem type:
 
-If:
-- Training error ↓ but Test error ↑ → **Overfitting**
+- **Regression Tasks:** Mean Squared Error (MSE), Root Mean Squared Error (RMSE), \( R^2 \)
+- **Classification Tasks:** Accuracy, Precision, Recall, F1-score, ROC-AUC
 
-Goal:
-- Achieve low error on both training and unseen data.
+Each metric reveals different aspects of model performance. We will study these in detail in later lectures.
 
 ---
 
-### 8️⃣ Hyperparameter Tuning and Model Selection
+### 10. Ethical Considerations in Machine Learning
 
-Directly tuning on test set → Overfitting on test data.
+Machine Learning is powerful — but with great power comes responsibility.
 
-**Holdout Validation**
-- Split data into Train / Validation / Test sets
-- Tune hyperparameters on validation set
-- Retrain on full training data
-- Evaluate on test set
+Bias in data or algorithms can lead to **unfair, discriminatory**, or **unsafe outcomes**.  
+Examples include facial recognition systems performing poorly on certain demographics or recommendation algorithms amplifying misinformation.
 
-**Cross-Validation**
-- Split data into multiple folds
-- Train/evaluate across folds
-- Average results for reliable performance estimate
+As ML engineers and researchers, we must:
+- Ensure **fairness** and **transparency**.
+- Respect **privacy**.
+- Evaluate **societal impact**.
 
----
-
-### 9️⃣ No Free Lunch Theorem
-
-> *No single model works best for all problems.* — David Wolpert (1996)
-
-Key ideas:
-- All models make **assumptions** about data.
-- Linear models assume linearity.
-- Neural networks assume hierarchical representation.
-
-In practice:
-- Choose models based on problem type
-- Compare several candidates empirically
+Ethical ML is not optional — it’s integral to building trustworthy AI systems.
 
 ---
 
-## Summary of Week 1
+### 11. Summary
 
-This week you learned:
+In this first week, we explored:
+- What Machine Learning is and how it differs from traditional programming.  
+- Key types of learning: supervised, unsupervised, semi-supervised, and reinforcement.  
+- The ML pipeline and terminology.  
+- Concepts of training, testing, underfitting, and overfitting.  
+- The importance of ethics in ML.
 
-- Definition and motivation for Machine Learning  
-- Main types of ML (supervised, unsupervised, reinforcement)  
-- Common challenges in ML practice  
-- Concepts of overfitting, underfitting, and data quality  
-- How to evaluate and validate ML models  
-- The importance of model selection and the No Free Lunch theorem
+You are now ready to move on to **Week-02**, where we’ll dive into the mathematics and intuition behind **Linear Regression** — one of the simplest yet most important models in supervised learning.
 
 ---
 
-### Takeaway
-
-> **Strong data**, **thoughtful model design**, and **rigorous evaluation** are the pillars of successful Machine Learning.
+**Suggested Reading:**
+- *Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow* by Aurélien Géron (Ch. 1)
+- Andrew Ng’s *Machine Learning Specialization* (Coursera)
+- *Deep Learning* by Goodfellow, Bengio, and Courville (Ch. 1)
 
 ---
