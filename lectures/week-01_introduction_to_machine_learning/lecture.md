@@ -1,43 +1,9 @@
-# CS-470: Machine Learning  
 ### Week 1 — Introduction to Machine Learning  
-**Instructor:** Dr. Sajjad Hussain  
-**Department of Electrical and Computer Engineering, SEECS, NUST**  
-**Date:** September 11, 2025  
-
-![NUST Logo](./images/nust_logo.png)
-
----
-
-## Course Logistics
-
-### Course Structure
-- Weekly lectures accompanied by **programming tutorial sessions**
-- Assessments include:
-  - Assignments — 20%
-  - Quizzes — 10%
-  - Midterm Exam — 30%
-  - Final Exam — 40%
-- You are **strongly encouraged** to complete Andrew Ng’s *Machine Learning Specialization* on Coursera to reinforce concepts.
 
 > **Note:** Many graphics and figures used in this course are adapted from  
 > *Aurélien Géron, Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow* (O’Reilly Media).
 
 ---
-
-## Week-01 Python Tutorial
-
-A **Python tutorial notebook** is available on the course LMS.  
-It covers:
-- Basic Python concepts, syntax, and examples  
-- Hands-on exercises aligned with lecture content  
-- Intended to help you gain fluency in Python for ML  
-
-**Action Item:**  
-Download and complete the notebook. Bring any questions to the next class discussion.
-
----
-
-## Introduction to Machine Learning
 
 ### What is Machine Learning?
 
