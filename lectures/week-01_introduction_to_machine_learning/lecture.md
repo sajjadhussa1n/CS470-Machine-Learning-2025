@@ -71,7 +71,7 @@ If a task involves pattern recognition, probabilistic decision-making, or adapti
 
 Machine Learning can be broadly categorized based on the type of feedback available from the data.
 
-#### Supervised Learning
+### 1.Supervised Learning
 
 In **supervised learning**, we have both input features (**X**) and target outputs (**Y**).  
 The model learns a mapping function:  
@@ -90,7 +90,7 @@ and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
 **Algorithms:** Linear Regression, Logistic Regression, Decision Trees, Support Vector Machines, Neural Networks.
 
-##### Classification vs Regression
+#### Classification vs Regression
 
 Supervised learning can be divided into **classification** and **regression** problems.
 
@@ -103,7 +103,7 @@ Supervised learning can be divided into **classification** and **regression** pr
 
 Both are forms of **supervised learning** since they rely on labeled training data.
 
-#### Unsupervised Learning
+### 2.Unsupervised Learning
 
 Here, only the inputs \( X \) are available — no labeled outputs.  
 The goal is to **discover hidden structures or patterns** within the data.
@@ -117,7 +117,7 @@ The goal is to **discover hidden structures or patterns** within the data.
 
 **Algorithms:** K-Means, DBSCAN, PCA, Autoencoders.
 
-#### Semi-Supervised Learning
+### 3.Semi-Supervised Learning
 
 A combination of labeled and unlabeled data. Often used when labeling is expensive but large amounts of unlabeled data are available.
 
@@ -126,7 +126,7 @@ A combination of labeled and unlabeled data. Often used when labeling is expensi
 
 **Example:** Training a face recognition model using a small set of labeled faces and many unlabeled ones.
 
-#### Reinforcement Learning
+### 4.Reinforcement Learning
 
 In this paradigm, an **agent** learns by interacting with an environment.  
 It takes actions, receives rewards or penalties, and gradually learns a policy that maximizes cumulative rewards.
@@ -193,7 +193,7 @@ This separation ensures that the model does not “memorize” the training data
 Building a successful ML system involves more than just choosing an algorithm. Data quality, representativeness, and model complexity all play critical roles.
 
 
-#### Insufficient Quantity of Training Data
+### 1.Insufficient Quantity of Training Data
 
 ML algorithms require large, diverse datasets to generalize well.  
 Simple tasks may require thousands of examples, while complex ones (like speech recognition) may need millions.
@@ -204,7 +204,7 @@ A Microsoft study demonstrated that even simple models can perform well on diffi
 *Figure: Dataset Size vs performance\**
 
 
-#### Non-Representative Training Data
+### 2.Non-Representative Training Data
 
 If the training data doesn’t reflect the real-world cases we aim to predict, the model will fail to generalize.
 
@@ -214,7 +214,7 @@ If the training data doesn’t reflect the real-world cases we aim to predict, t
 Example: In the 1936 U.S. election, *Literary Digest* incorrectly predicted a Republican win because their survey disproportionately sampled wealthy individuals. The actual winner, Franklin D. Roosevelt (Democrat), won by a landslide.
 
 
-#### Poor-Quality Data
+### 3.Poor-Quality Data
 
 Noisy, inconsistent, or incomplete data can degrade model performance.
 
@@ -226,7 +226,7 @@ Typical remedies include:
 Data cleaning and preprocessing often consume a large portion of an ML practitioner’s time.
 
 
-#### Irrelevant Features
+### 4.Irrelevant Features
 
 The quality of a model’s input features largely determines its success.  
 “**Garbage in, garbage out**” aptly summarizes this.
@@ -237,7 +237,7 @@ Good **feature engineering** involves:
 - **Feature creation:** Deriving new meaningful variables.
 
 
-#### Overfitting the Training Data
+### 5.Overfitting the Training Data
 
 **Overfitting** occurs when the model learns the training data too well—including its noise and anomalies—resulting in poor performance on unseen data.
 
@@ -270,7 +270,7 @@ To fix underfitting:
 - Reduce constraints (less regularization).
 
 
-#### Testing and Validating Models
+### 6.Testing and Validating Models
 
 To assess how well a model generalizes to new data, we divide the available data into:
 - **Training set:** Used for learning parameters.  
@@ -280,7 +280,7 @@ If the model performs well on training but poorly on test data → **overfitting
 Typical split: 80% training, 20% testing (though it depends on dataset size).
 
 
-##### Hyperparameter Tuning and Model Selection
+#### Hyperparameter Tuning and Model Selection
 
 Using the test set to repeatedly adjust model parameters can lead to **test set overfitting**.  
 To avoid this, we use:
@@ -307,7 +307,7 @@ In practice:
 
 ---
 
-## Summary of Week 1
+### Summary of Week 1
 
 This week, we learned:
 - The foundations and definitions of machine learning.
