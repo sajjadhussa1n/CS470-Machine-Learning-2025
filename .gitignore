@@ -1,0 +1,19 @@
+# Python cache and build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.log
+
+# Jupyter and Colab
+.ipynb_checkpoints/
+*.ipynb~
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
