@@ -46,8 +46,8 @@ Traditionally, programmers write explicit rules to solve a problem. But for many
 
 In short, ML shifts the paradigm from **rule-based programming** to **data-driven learning**.
 
-![](figures/traditional_approach.png)
-![](figures/ml_approach.png)
+![](.images/traditional_approach.png)
+![](.images/ml_approach.png)
 
 ---
 ### When to Use Machine Learning
@@ -76,7 +76,7 @@ f: X \rightarrow Y
 \]
 and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
-![](figures/supervised.png)
+![](.images/supervised.png)
 
 **Examples:**
 - Predicting house prices (Regression)
@@ -102,7 +102,7 @@ Both are forms of **supervised learning** since they rely on labeled training da
 Here, only the inputs \( X \) are available — no labeled outputs.  
 The goal is to **discover hidden structures or patterns** within the data.
 
-![](figures/unsupervised.png)
+![](.images/unsupervised.png)
 
 **Examples:**
 - Grouping customers by purchase behavior (Clustering)
@@ -114,7 +114,7 @@ The goal is to **discover hidden structures or patterns** within the data.
 
 A combination of labeled and unlabeled data. Often used when labeling is expensive but large amounts of unlabeled data are available.
 
-![](figures/semisupervised.png)
+![](.images/semisupervised.png)
 
 **Example:** Training a face recognition model using a small set of labeled faces and many unlabeled ones.
 
@@ -123,7 +123,7 @@ A combination of labeled and unlabeled data. Often used when labeling is expensi
 In this paradigm, an **agent** learns by interacting with an environment.  
 It takes actions, receives rewards or penalties, and gradually learns a policy that maximizes cumulative rewards.
 
-![](figures/reinforcement.png)
+![](.images/reinforcement.png)
 
 Key terms:
 - **Agent:** The learner or decision-maker.
@@ -200,7 +200,7 @@ Building a successful ML system involves more than just choosing an algorithm. D
 ML algorithms require large, diverse datasets to generalize well.  
 Simple tasks may require thousands of examples, while complex ones (like speech recognition) may need millions.
 
-![](figures/dataset_size.png)
+![](.images/dataset_size.png)
 
 A Microsoft study demonstrated that even simple models can perform well on difficult tasks when trained with large amounts of high-quality data — reinforcing the idea that **data often matters more than algorithms**.
 
@@ -246,7 +246,7 @@ Good **feature engineering** involves:
 
 **Overfitting** occurs when the model learns the training data too well—including its noise and anomalies—resulting in poor performance on unseen data.
 
-![](figures/over_fitting.png)
+![](.images/over_fitting.png)
 
 Overfitting usually arises from:
 - Models that are too complex.
