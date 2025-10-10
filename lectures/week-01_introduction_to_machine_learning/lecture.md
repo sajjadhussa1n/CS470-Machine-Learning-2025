@@ -1,7 +1,3 @@
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 # CS470: Machine Learning  
 ## Week 01 — Introduction to Machine Learning  
 
@@ -82,13 +78,14 @@ Machine Learning can be broadly categorized based on the type of feedback availa
 
 In **supervised learning**, we have both input features (**X**) and target outputs (**Y**).  
 The model learns a mapping function:  
-$$
-f: X \rightarrow Y
-$$
+
+**f: X --> Y**
+
 and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
 ![](./images/supervised.png)
-*Figure 3: Supervised Algorithm.*
+
+*Figure 3: Supervised Learning.*
 
 **Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
 
