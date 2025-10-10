@@ -46,8 +46,8 @@ Traditionally, programmers write explicit rules to solve a problem. But for many
 
 In short, ML shifts the paradigm from **rule-based programming** to **data-driven learning**.
 
-![](.images/traditional_approach.png)
-![](.images/ml_approach.png)
+![](./images/traditional_approach.png)
+![](./images/ml_approach.png)
 
 ---
 ### When to Use Machine Learning
