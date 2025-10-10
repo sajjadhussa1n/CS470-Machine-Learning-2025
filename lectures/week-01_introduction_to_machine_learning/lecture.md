@@ -3,7 +3,7 @@
 
 ---
 
-### 1. Introduction and Motivation
+### Introduction and Motivation
 
 Machine Learning (ML) is one of the most transformative fields in computer science today. It allows computers to **learn patterns from data** and **make predictions or decisions** without being explicitly programmed for each possible situation.
 
@@ -19,7 +19,7 @@ At its core, ML is about building systems that **improve with experience** — m
 
 ---
 
-### 2. What Is Machine Learning?
+### What Is Machine Learning?
 
 Tom Mitchell (1997) gave one of the most widely accepted definitions:
 
@@ -34,7 +34,7 @@ A spam filter, for example, improves its ability to detect spam the more emails 
 
 ---
 
-### 3. Why Machine Learning?
+### Why Machine Learning?
 
 Traditionally, programmers write explicit rules to solve a problem. But for many tasks — like recognizing speech or handwriting — **rules are too complex or numerous to define manually**. ML automates this process by learning from examples instead.
 
@@ -48,15 +48,12 @@ In short, ML shifts the paradigm from **rule-based programming** to **data-drive
 
 ![](./images/traditional_approach.png)
 
-*Figure 1: In traditional programming, data and manually defined rules are combined to produce decisions or outputs.*
+*Figure: In traditional programming, data and manually defined rules are combined to produce decisions or outputs.\**
 
 ![](./images/ml_approach.png)
 
-*Figure 2: In machine learning, data and known decisions (labels) are provided to a learning algorithm to produce a model that can generalize to new data.*
+*Figure: In machine learning, data and known decisions (labels) are provided to a learning algorithm to produce a model that can generalize to new data.\**
 
-**Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
-
----
 ### When to Use Machine Learning
 
 Machine learning excels when:
@@ -85,9 +82,7 @@ and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
 ![](./images/supervised.png)
 
-*Figure 3: Supervised Learning\**
-
-**\*Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
+*Figure: Supervised Learning\**
 
 **Examples:**
 - Predicting house prices (Regression)
@@ -113,7 +108,8 @@ Both are forms of **supervised learning** since they rely on labeled training da
 Here, only the inputs \( X \) are available — no labeled outputs.  
 The goal is to **discover hidden structures or patterns** within the data.
 
-![](.images/unsupervised.png)
+![](./images/unsupervised.png)
+*Figure: Unsupervised Learning\**
 
 **Examples:**
 - Grouping customers by purchase behavior (Clustering)
@@ -125,7 +121,8 @@ The goal is to **discover hidden structures or patterns** within the data.
 
 A combination of labeled and unlabeled data. Often used when labeling is expensive but large amounts of unlabeled data are available.
 
-![](.images/semisupervised.png)
+![](./images/semisupervised.png)
+*Figure: Semi-supervised learning\**
 
 **Example:** Training a face recognition model using a small set of labeled faces and many unlabeled ones.
 
@@ -134,7 +131,8 @@ A combination of labeled and unlabeled data. Often used when labeling is expensi
 In this paradigm, an **agent** learns by interacting with an environment.  
 It takes actions, receives rewards or penalties, and gradually learns a policy that maximizes cumulative rewards.
 
-![](.images/reinforcement.png)
+![](./images/reinforcement.png)
+*Figure: Reinforcement Learning\**
 
 Key terms:
 - **Agent:** The learner or decision-maker.
@@ -163,9 +161,8 @@ Understanding some fundamental terms is crucial before diving deeper.
 | **Model Parameters** | The internal values (weights) the algorithm learns |
 | **Hyperparameters** | External settings chosen before training (e.g., learning rate, number of trees) |
 
----
 
-### 6. The Machine Learning Pipeline
+### The Machine Learning Pipeline
 
 The overall workflow of an ML project generally follows these steps:
 
@@ -178,9 +175,8 @@ The overall workflow of an ML project generally follows these steps:
 7. **Deployment:** Integrate the trained model into an application or system.
 8. **Monitoring:** Track model performance and retrain as needed.
 
----
 
-### 7. Training and Testing Paradigm
+### Training and Testing Paradigm
 
 A fundamental principle in ML is to **train on one set of data** and **test on another**.
 
@@ -192,32 +188,23 @@ This separation ensures that the model does not “memorize” the training data
 
 ---
 
-## Example Datasets
-
-- **Supervised:** Housing prices, sentiment analysis, image classification  
-- **Unsupervised:** Customer segmentation, topic modeling in news articles  
-- **Reinforcement:** Game simulations, robotic navigation  
-
----
-
-## Challenges in Machine Learning
+### Challenges in Machine Learning
 
 Building a successful ML system involves more than just choosing an algorithm. Data quality, representativeness, and model complexity all play critical roles.
 
----
 
-### Insufficient Quantity of Training Data
+#### Insufficient Quantity of Training Data
 
 ML algorithms require large, diverse datasets to generalize well.  
 Simple tasks may require thousands of examples, while complex ones (like speech recognition) may need millions.
 
-![](.images/dataset_size.png)
-
 A Microsoft study demonstrated that even simple models can perform well on difficult tasks when trained with large amounts of high-quality data — reinforcing the idea that **data often matters more than algorithms**.
 
----
+![](./images/dataset_size.png)
+*Figure: Dataset Size vs performance\**
 
-### Non-Representative Training Data
+
+#### Non-Representative Training Data
 
 If the training data doesn’t reflect the real-world cases we aim to predict, the model will fail to generalize.
 
@@ -226,9 +213,8 @@ If the training data doesn’t reflect the real-world cases we aim to predict, t
 
 Example: In the 1936 U.S. election, *Literary Digest* incorrectly predicted a Republican win because their survey disproportionately sampled wealthy individuals. The actual winner, Franklin D. Roosevelt (Democrat), won by a landslide.
 
----
 
-### Poor-Quality Data
+#### Poor-Quality Data
 
 Noisy, inconsistent, or incomplete data can degrade model performance.
 
@@ -239,9 +225,8 @@ Typical remedies include:
 
 Data cleaning and preprocessing often consume a large portion of an ML practitioner’s time.
 
----
 
-### Irrelevant Features
+#### Irrelevant Features
 
 The quality of a model’s input features largely determines its success.  
 “**Garbage in, garbage out**” aptly summarizes this.
@@ -251,21 +236,20 @@ Good **feature engineering** involves:
 - **Feature extraction:** Transforming or combining features (e.g., PCA).  
 - **Feature creation:** Deriving new meaningful variables.
 
----
 
-### Overfitting the Training Data
+#### Overfitting the Training Data
 
 **Overfitting** occurs when the model learns the training data too well—including its noise and anomalies—resulting in poor performance on unseen data.
 
-![](.images/over_fitting.png)
+![](./images/over_fitting.png)
+*Figure: Overfitting\**
 
 Overfitting usually arises from:
 - Models that are too complex.
 - Small or noisy datasets.
 
----
 
-### Preventing Overfitting
+##### Preventing Overfitting
 
 To reduce overfitting:
 - **Simplify the model:** Use fewer parameters or apply regularization.  
@@ -274,9 +258,8 @@ To reduce overfitting:
 
 Regularization introduces a **hyperparameter** that controls the strength of the penalty, balancing model flexibility and generalization.
 
----
 
-### Underfitting the Training Data
+#### Underfitting the Training Data
 
 **Underfitting** happens when the model is too simple to capture the underlying data structure.  
 This leads to poor performance even on the training set.
@@ -286,9 +269,8 @@ To fix underfitting:
 - Provide richer features.  
 - Reduce constraints (less regularization).
 
----
 
-### Testing and Validating Models
+#### Testing and Validating Models
 
 To assess how well a model generalizes to new data, we divide the available data into:
 - **Training set:** Used for learning parameters.  
@@ -297,9 +279,8 @@ To assess how well a model generalizes to new data, we divide the available data
 If the model performs well on training but poorly on test data → **overfitting**.  
 Typical split: 80% training, 20% testing (though it depends on dataset size).
 
----
 
-### Hyperparameter Tuning and Model Selection
+##### Hyperparameter Tuning and Model Selection
 
 Using the test set to repeatedly adjust model parameters can lead to **test set overfitting**.  
 To avoid this, we use:
@@ -309,9 +290,8 @@ To avoid this, we use:
 
 These methods help identify the best model configuration before final testing.
 
----
 
-### No Free Lunch Theorem
+#### No Free Lunch Theorem
 
 The **No Free Lunch (NFL)** theorem, proposed by David Wolpert (1996), states that:
 
@@ -338,6 +318,10 @@ This week, we learned:
 
 **Takeaway:**  
 > Successful machine learning is built on high-quality data, thoughtfully designed models, and rigorous evaluation practices.
+
+---
+
+**\*Image Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
 
 ---
 
