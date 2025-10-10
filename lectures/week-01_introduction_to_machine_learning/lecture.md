@@ -78,12 +78,15 @@ Machine Learning can be broadly categorized based on the type of feedback availa
 
 In **supervised learning**, we have both input features (**X**) and target outputs (**Y**).  
 The model learns a mapping function:  
-\[
+$$
 f: X \rightarrow Y
-\]
+$$
 and is evaluated by how accurately it predicts \( Y \) for unseen \( X \).
 
-![](.images/supervised.png)
+![](./images/supervised.png)
+*Figure 3: Supervised Algorithm.*
+
+**Source:** Adapted from *Aurélien Géron, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow," 3rd Edition, O’Reilly, 2023.*
 
 **Examples:**
 - Predicting house prices (Regression)
