@@ -79,6 +79,51 @@ Students will learn how to build predictive models, evaluate performance, and un
 
 ---
 
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+
+To get a local copy of the course materials:
+```bash
+git clone https://github.com/sajjadhussa1n/CS470-Machine-Learning-2025.git
+cd CS470-Machine-Learning-2025
+```
+
+## 2. Updating Course Materials Weekly
+
+New lectures, assignments, and notebooks will be uploaded to this repository each week.  
+To ensure you always have the latest materials, **pull the updated version from the main branch** regularly.
+
+### Step 1: Open Your Local Repository
+
+If you have already cloned the repository, open your terminal or VS Code terminal and navigate to it:
+
+```bash
+cd CS470-Machine-Learning-2025
+```
+### Step 2: Pull the Latest Updates
+
+Run the following command to fetch new lecture notes, slides, notebooks, and assignments:
+
+```bash
+git pull origin main
+```
+This command updates your local repository with the latest content from GitHub without deleting your existing files.
+
+### Step 3: Handling Local Changes
+
+If you’ve made edits (for example, while solving assignments) and encounter merge conflicts, you can temporarily save your local changes before pulling updates:
+
+```bash
+git stash
+git pull origin main
+git stash pop
+```
+---
+
 ## Tools & Environment
 - **Programming Language:** Python 3.x  
 - **Recommended IDEs:** VS Code, Jupyter Notebook, or Google Colab  
