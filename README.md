@@ -79,14 +79,12 @@ Students will learn how to build predictive models, evaluate performance, and un
 
 ---
 
-
----
-
 ## Getting Started
 
 ### 1. Clone the Repository
 
-To get a local copy of the course materials:
+To get a local copy of the course materials, open your terminal or VS Code terminal and run the following command:
+
 ```bash
 git clone https://github.com/sajjadhussa1n/CS470-Machine-Learning-2025.git
 cd CS470-Machine-Learning-2025
