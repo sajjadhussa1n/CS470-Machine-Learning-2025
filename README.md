@@ -1,6 +1,6 @@
-# CS470: Machine Learning (Spring 2025)
+# CS470: Machine Learning (Fall 2025)
 
-This repository contains **lecture materials, slides, quizzes, assignments, and practice notebooks** for the course **CS470 – Machine Learning (Spring 2025)**.
+This repository contains **lecture materials, slides, quizzes, assignments, and practice notebooks** for the course **CS470 – Machine Learning (Fall 2025)**.
 
 ---
 
