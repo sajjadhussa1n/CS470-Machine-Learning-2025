@@ -82,10 +82,12 @@ High recall means the model misses very few positive cases.
 
 In many models (especially probabilistic ones like logistic regression), predictions are made by comparing the predicted probability to a threshold — typically 0.5. Changing this threshold can significantly affect precision and recall.
 
-![](./images/precision_recall_tradeoff.png)
+<img src="./images/precision_recall_tradeoff.png" alt="Precision-Recall Tradeoff" width="500"/>
 
 - Lowering the threshold increases recall (more positives are detected), but precision drops since more false positives occur.
 - Raising the threshold increases precision (fewer false alarms) but reduces recall (more true cases are missed).
+
+![](./images/precision_recall_tradeoff.png)
 
 The ideal balance between precision and recall depends on the application.  
 For example:
