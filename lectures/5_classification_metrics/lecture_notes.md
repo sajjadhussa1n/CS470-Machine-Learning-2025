@@ -18,7 +18,7 @@ where **TP**, **TN**, **FP**, and **FN** represent True Positives, True Negative
 
 While this seems like a natural and simple measure of performance, it can be misleading in scenarios where one class heavily dominates the other. For example, imagine a medical diagnosis model where only 1% of patients actually have a rare disease. If the model simply predicts *“no disease”* for everyone, it would be **99% accurate** — yet completely useless for identifying actual patients who need help.
 
-![](./images/accuracy_paradox.png)
+<img src="./images/accuracy_paradox.png" alt="Accuracy Paradox" width="500"/>
 
 This phenomenon is known as the **accuracy paradox**, and it motivates the need for more robust metrics that take into account the nature of misclassifications.
 
@@ -33,7 +33,7 @@ To understand model performance more deeply, we use the **confusion matrix**. It
 | **Positive**       | True Positive (TP) | False Negative (FN) |
 | **Negative**       | False Positive (FP) | True Negative (TN) |
 
-![](./images/confusion_matrix_diagram.png)
+<img src="./images/confusion_matrix_diagram.png" alt="Confusion Matrix" width="500"/>
 
 Each term has a specific meaning:
 
@@ -87,8 +87,6 @@ In many models (especially probabilistic ones like logistic regression), predict
 - Lowering the threshold increases recall (more positives are detected), but precision drops since more false positives occur.
 - Raising the threshold increases precision (fewer false alarms) but reduces recall (more true cases are missed).
 
-![](./images/precision_recall_tradeoff.png)
-
 The ideal balance between precision and recall depends on the application.  
 For example:
 - In **spam filtering**, we prefer **high precision** to avoid marking important emails as spam.
@@ -101,7 +99,7 @@ For example:
 To visualize this tradeoff, we can plot the **Precision–Recall curve**.  
 This curve shows precision on the y-axis and recall on the x-axis as the decision threshold varies.
 
-![](./images/precision_recall_curve.png)
+<img src="./images/precision_recall_curve.png" alt="Precision Recall Curve" width="500"/>
 
 A perfect classifier would have precision and recall both equal to 1, resulting in a point at the top-right corner.  
 In practice, the area under this curve (AUC-PR) provides a single number summarizing performance — higher values indicate better performance.
@@ -139,7 +137,7 @@ The ROC curve plots:
   FPR = \frac{FP}{FP + TN}
   \]
 
-![](./images/roc_auc_comparison.png)
+<img src="./images/roc_auc_comparison.png" alt="AUC-ROC" width="500"/>
 
 Each point on the ROC curve corresponds to a different classification threshold.  
 A model that makes random guesses will produce a diagonal line from (0, 0) to (1, 1).  
@@ -180,7 +178,7 @@ In practical ML workflows, you should always start by examining the **confusion 
 This week’s lecture focused on evaluating classification models.  
 We started with accuracy and learned why it can be deceptive in imbalanced datasets. We introduced the confusion matrix as a foundation for understanding prediction errors and explored precision, recall, and their tradeoff through intuitive examples. We then discussed F1-score as a harmonic mean of precision and recall and concluded with ROC curves and AUC as comprehensive tools for assessing classifier performance.
 
-![](./images/threshold_effect.png)
+<img src="./images/threshold_effect.png" alt="Threshold Effect" width="500"/>
 
 By understanding and applying these metrics thoughtfully, we can make more informed choices when tuning models and selecting the most appropriate one for deployment.
 
