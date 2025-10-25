@@ -22,8 +22,8 @@ Each question divides the possible outcomes into smaller groups. The final decis
 
 Consider the following dataset for predicting whether a person enjoyed an outdoor activity based on **Weather (Outlook)** and **Temperature**.
 
-| Person | Weather (Outlook) | Temperature | Enjoyed? |
-|:-------:|:-----------------:|:------------:|:---------:|
+| Person | Weather | Temperature | Enjoyed? |
+|:-------:|:-------:|:------------:|:---------:|
 | 1 | Sunny | Hot | No |
 | 2 | Sunny | Hot | No |
 | 3 | Overcast | Hot | Yes |
@@ -46,12 +46,12 @@ Our goal is to learn a set of decision rules that can correctly predict “Enjoy
 **Entropy** measures the amount of disorder or impurity in a dataset. It quantifies how mixed the class labels are within a node.
 
 ```math
-H(S) = -p_+ \log_2(p_+) - p_- \log_2(p_-)
+H(S) = -p_1 \log_2(p_1) - p_0 \log_2(p_0)
 ```
 
 where:
-- $p_{+}$ = proportion of positive examples (Yes)
-- $p_{-}$ = proportion of negative examples (No)
+- $p_1$ = proportion of positive examples (Yes)
+- $p_0$ = proportion of negative examples (No)
 
 Entropy ranges from **0** (perfectly pure) to **1** (completely impure).
 
@@ -61,7 +61,7 @@ We have:
 
 ```math
 
-p_+ = \frac{7}{10}, \quad p_- = \frac{3}{10}
+p_1 = \frac{7}{10}, \quad p_0 = \frac{3}{10}
 
 ```
 
