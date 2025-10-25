@@ -80,14 +80,16 @@ This means the initial dataset still contains uncertainty — it’s not fully p
 When a dataset is split on a feature, we expect to reduce uncertainty.  
 The **Information Gain (IG)** quantifies this reduction:
 
-\[
+```math
+
 IG = H(S) - \sum_{i=1}^{k} \frac{N_i}{N} H(S_i)
-\]
+
+```
 
 where:
-- \( H(S) \) is entropy before the split,
-- \( H(S_i) \) is entropy of each subset after splitting,
-- \( \frac{N_i}{N} \) is the fraction of samples in each subset.
+- $H(S)$ is entropy before the split,
+- $H(S_i)$ is entropy of each subset after splitting,
+- $\frac{N_i}{N}$ is the fraction of samples in each subset.
 
 We compute IG for all candidate features and choose the feature that gives the **maximum IG**.
 
@@ -95,7 +97,7 @@ We compute IG for all candidate features and choose the feature that gives the *
 
 ### Example: Split by “Outlook”
 
-| Outlook | Yes | No | Total | \(p_+\) | \(p_-\) | Entropy |
+| Outlook | Yes | No | Total | $p_1$ | $p_0$ | Entropy |
 |:--------:|:----:|:---:|:------:|:--------:|:--------:|:----------:|
 | Sunny | 2 | 3 | 5 | 0.4 | 0.6 | 0.971 |
 | Overcast | 2 | 0 | 2 | 1.0 | 0.0 | 0.0 |
@@ -103,12 +105,17 @@ We compute IG for all candidate features and choose the feature that gives the *
 
 Weighted average entropy after split:
 
-\[
+```math
+
 H_{\text{split}} = \frac{5}{10}(0.971) + \frac{2}{10}(0.0) + \frac{4}{10}(0.811) = 0.788
-\]
-\[
+
+```
+
+```math
+
 IG = 0.881 - 0.788 = 0.093
-\]
+
+```
 
 This process repeats for other features (like **Temperature**) and the one with higher \(IG\) becomes the root split.
 
@@ -118,15 +125,19 @@ This process repeats for other features (like **Temperature**) and the one with 
 
 Another popular impurity measure is **Gini impurity**, defined as:
 
-\[
+```math
+
 G(S) = 1 - \sum_{i=1}^{k} p_i^2
-\]
+
+```
 
 For our root node:
 
-\[
+```math
+
 G(S) = 1 - (0.7^2 + 0.3^2) = 0.42
-\]
+
+```
 
 Gini impurity is computationally faster and is commonly used in libraries such as **scikit-learn**.
 
@@ -161,7 +172,7 @@ At any point, the objective function for the decision tree can be defined as min
 J = \sum_{m=1}^{M} \frac{N_m}{N} H_m
 ```
 
-where \(H_m\) can represent entropy or Gini impurity at node \(m\).
+where $H_m$ can represent entropy or Gini impurity at node $m$.
 
 ---
 
@@ -199,43 +210,55 @@ We use the following small dataset of house prices:
 
 A regression tree tries to minimize the **Mean Squared Error (MSE)** within each node:
 
-\[
+```math
+
 \text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_i - \bar{y})^2
-\]
+
+```
 
 At each split, the algorithm chooses the threshold that minimizes the **Weighted MSE**:
 
-\[
-\text{Weighted MSE} = \frac{N_L}{N} \text{MSE}_L + \frac{N_R}{N} \text{MSE}_R
-\]
+```math
 
-where \(N_L\) and \(N_R\) are the number of samples in the left and right subsets respectively.
+\text{Weighted MSE} = \frac{N_L}{N} \text{MSE}_L + \frac{N_R}{N} \text{MSE}_R
+
+```
+
+where $N_L$ and $N_R$ are the number of samples in the left and right subsets respectively.
 
 ---
 
 ### Step 2: Compute MSE for the Entire Dataset
 
-\[
+```math
+
 \bar{y}_{\text{root}} = \frac{300 + 320 + 400 + 420 + 500 + 520}{6} = 410
-\]
 
-\[
+```
+
+```math
 \text{MSE}_{\text{root}} = \frac{(300-410)^2 + (320-410)^2 + (400-410)^2 + (420-410)^2 + (500-410)^2 + (520-410)^2}{6}
-\]
 
-\[
+```
+
+```math
+
 = \frac{12100 + 8100 + 100 + 100 + 8100 + 12100}{6} = 6750
-\]
+
+```
 
 ---
 
 ### Step 3: Evaluate Possible Splits on `Size`
 
 The unique sorted sizes are:
-\[
+
+```math
+
 [1000, 1200, 1500, 1800, 2000, 2200]
-\]
-Possible thresholds are: 1100, 1350, 1650, 1900, 2100.
+
+```
+Possible thresholds based on mean of two consecutive values are: 1100, 1350, 1650, 1900, 2100.
 
 Below are sample computations for each threshold.
 
@@ -245,18 +268,29 @@ Below are sample computations for each threshold.
 **Left:** [1000] → [300]  
 **Right:** [1200, 1500, 1800, 2000, 2200] → [320, 400, 420, 500, 520]
 
-\[
+```math
+
 \bar{y}_L = 300, \quad \text{MSE}_L = 0
-\]
-\[
+
+```
+
+```math
+
 \bar{y}_R = 432, \quad \text{MSE}_R = 5216
-\]
-\[
+
+```
+
+```math
+
 \text{Weighted MSE} = \frac{1}{6}(0) + \frac{5}{6}(5216) = 4346.67
-\]
-\[
+
+```
+
+```math
+
 \Delta_{\text{var}} = 6750 - 4346.67 = 2403.33
-\]
+
+```
 
 ---
 
@@ -264,15 +298,23 @@ Below are sample computations for each threshold.
 **Left:** [1000, 1200] → [300, 320]  
 **Right:** [1500, 1800, 2000, 2200] → [400, 420, 500, 520]
 
-\[
+```math
+
 \text{MSE}_L = 100, \quad \text{MSE}_R = 2600
-\]
-\[
+
+```
+
+```math
+
 \text{Weighted MSE} = \frac{2}{6}(100) + \frac{4}{6}(2600) = 1766.67
-\]
-\[
+
+```
+
+```math
+
 \Delta_{\text{var}} = 6750 - 1766.67 = 4983.33
-\]
+
+```
 
 ---
 
@@ -280,15 +322,23 @@ Below are sample computations for each threshold.
 **Left:** [1000, 1200, 1500] → [300, 320, 400]  
 **Right:** [1800, 2000, 2200] → [420, 500, 520]
 
-\[
+```math
+
 \text{MSE}_L = 1866.67, \quad \text{MSE}_R = 1866.67
-\]
-\[
+
+```
+
+```math
+
 \text{Weighted MSE} = 1866.67
-\]
-\[
+
+```
+
+```math
+
 \Delta_{\text{var}} = 6750 - 1866.67 = 4883.33
-\]
+
+```
 
 ---
 
@@ -296,15 +346,23 @@ Below are sample computations for each threshold.
 **Left:** [1000, 1200, 1500, 1800] → [300, 320, 400, 420]  
 **Right:** [2000, 2200] → [500, 520]
 
-\[
+```math
+
 \text{MSE}_L = 2200, \quad \text{MSE}_R = 100
-\]
-\[
+
+```
+
+```math
+
 \text{Weighted MSE} = \frac{4}{6}(2200) + \frac{2}{6}(100) = 1500
-\]
-\[
+
+```
+
+```math
+
 \Delta_{\text{var}} = 6750 - 1500 = 5250
-\]
+
+```
 
 ---
 
@@ -312,15 +370,23 @@ Below are sample computations for each threshold.
 **Left:** [1000, 1200, 1500, 1800, 2000] → [300, 320, 400, 420, 500]  
 **Right:** [2200] → [520]
 
-\[
+```math
+
 \text{MSE}_L = 5168, \quad \text{MSE}_R = 0
-\]
-\[
+
+```
+
+```math
+
 \text{Weighted MSE} = \frac{5}{6}(5168) = 4306.67
-\]
-\[
+
+```
+
+```math
+
 \Delta_{\text{var}} = 6750 - 4306.67 = 2443.33
-\]
+
+```
 
 ---
 
