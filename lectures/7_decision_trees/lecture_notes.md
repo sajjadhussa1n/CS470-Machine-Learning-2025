@@ -60,12 +60,15 @@ Entropy ranges from **0** (perfectly pure) to **1** (completely impure).
 We have:
 
 ```math
-\[
+
 p_+ = \frac{7}{10}, \quad p_- = \frac{3}{10}
-\]
-\[
+
+```
+
+```math
+
 H(S) = -0.7 \log_2(0.7) - 0.3 \log_2(0.3) \approx 0.881
-\]
+
 ```
 
 This means the initial dataset still contains uncertainty — it’s not fully pure.
