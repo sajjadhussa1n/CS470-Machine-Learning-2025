@@ -67,7 +67,7 @@ p_1 = \frac{7}{10}, \quad p_0 = \frac{3}{10}
 
 ```math
 
-H(S) = -0.7 \log_2(0.7) - 0.3 \log_2(0.3) \approx 0.881
+H(S) = -0.7 \log_2(0.7) - 0.3 \log_2(0.3) \approx 0.8813
 
 ```
 
@@ -95,29 +95,69 @@ We compute IG for all candidate features and choose the feature that gives the *
 
 ---
 
-### Example: Split by “Outlook”
+### Example: Split by “Weather”
 
-| Outlook | Yes | No | Total | $p_1$ | $p_0$ | Entropy |
+| Weather | Yes | No | Total | $p_1$ | $p_0$ | Entropy |
 |:--------:|:----:|:---:|:------:|:--------:|:--------:|:----------:|
-| Sunny | 2 | 3 | 5 | 0.4 | 0.6 | 0.971 |
+| Sunny | 2 | 2 | 4 | 0.5 | 0.5 | 1.0 |
 | Overcast | 2 | 0 | 2 | 1.0 | 0.0 | 0.0 |
-| Rainy | 3 | 1 | 4 | 0.75 | 0.25 | 0.811 |
+| Rainy | 3 | 1 | 4 | 0.75 | 0.25 | 0.8113 |
 
 Weighted average entropy after split:
 
 ```math
 
-H_{\text{split}} = \frac{5}{10}(0.971) + \frac{2}{10}(0.0) + \frac{4}{10}(0.811) = 0.788
+H_{\text{split}} = \frac{4}{10}(1.0) + \frac{2}{10}(0.0) + \frac{4}{10}(0.8113) = 0.7245
 
 ```
 
 ```math
 
-IG = 0.881 - 0.788 = 0.093
+IG = 0.8813 - 0.7245 = 0.1568
 
 ```
 
-This process repeats for other features (like **Temperature**) and the one with higher \(IG\) becomes the root split.
+This process must be repeated for other feature **Temperature** and the one with higher $IG$ becomes the root split.
+
+### Split by “Temperature”
+
+| Temperature | Yes | No | Total | $p_1$ | $p_0$ | Entropy |
+|:------------:|:----:|:---:|:------:|:--------:|:--------:|:----------:|
+| Hot | 1 | 2 | 3 | 0.33 | 0.67 | 0.9183 |
+| Mild | 3 | 0 | 3 | 1.0 | 0.0 | 0.0 |
+| Cool | 3 | 1 | 4 | 0.75 | 0.25 | 0.8113 |
+
+
+Weighted average entropy after split:
+
+```math
+
+H_{\text{split}} = \frac{3}{10}(0.9183) + \frac{3}{10}(0.0) + \frac{4}{10}(0.8113) = 0.600
+
+```
+
+```math
+
+IG = 0.8813 - 0.6000 = 0.2813
+
+```
+The result suggest that we must split based on **Temperature** feature as it gives us more information or in other words, splitting our data based on this feature reduces the disorder (entropy) in the data. 
+
+The resulting tree after split looks like the following: 
+
+```
+        [All Data: 7Y, 3N]
+        Entropy = 0.8813
+        Split on: Temperature
+            |
+    -------------------------
+    |          |            |
+   Hot       Mild         Cool
+ [1Y, 2N]   [3Y, 0N]    [3Y, 1N]
+ E=0.918    E=0.0       E=0.811
+
+ ```
+
 
 ---
 
