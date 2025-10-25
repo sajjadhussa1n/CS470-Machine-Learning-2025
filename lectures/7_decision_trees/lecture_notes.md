@@ -45,25 +45,28 @@ Our goal is to learn a set of decision rules that can correctly predict “Enjoy
 
 **Entropy** measures the amount of disorder or impurity in a dataset. It quantifies how mixed the class labels are within a node.
 
-\[
+```math
 H(S) = -p_+ \log_2(p_+) - p_- \log_2(p_-)
-\]
+```
 
 where:
-- \( p_+ \) = proportion of positive examples (Yes)
-- \( p_- \) = proportion of negative examples (No)
+- $p_{+}$ = proportion of positive examples (Yes)
+- $p_{-}$ = proportion of negative examples (No)
 
 Entropy ranges from **0** (perfectly pure) to **1** (completely impure).
 
 ### Entropy of the Root Node
 
 We have:
+
+```math
 \[
 p_+ = \frac{7}{10}, \quad p_- = \frac{3}{10}
 \]
 \[
 H(S) = -0.7 \log_2(0.7) - 0.3 \log_2(0.3) \approx 0.881
 \]
+```
 
 This means the initial dataset still contains uncertainty — it’s not fully pure.
 
