@@ -1,6 +1,5 @@
 # Week 07 – Decision Trees
 
-Decision Trees are among the most intuitive and interpretable machine learning models. They recursively partition the data space into smaller and more homogeneous regions based on feature values. Each partition represents a decision rule, and the final leaves represent the predicted class or value.
 
 This week, we explore how decision trees work for **classification** and **regression**, including the mathematical principles such as **entropy**, **information gain**, **Gini impurity**, and **mean squared error (MSE)** for regression trees.
 
@@ -16,9 +15,20 @@ Decision Trees mimic human reasoning when making decisions. Suppose you are tryi
 
 Each question divides the possible outcomes into smaller groups. The final decision is made after a series of such splits. This hierarchical, question-based reasoning is exactly how decision trees work.
 
+The power of decision trees lies in their ability to handle both numerical and categorical data without requiring extensive preprocessing. Unlike many algorithms that need feature scaling or normalization, decision trees can work directly with raw data. They naturally handle non-linear relationships and can reveal feature importance through their splitting structure. This **white box** nature makes them particularly valuable in domains where model interpretability is crucial, such as healthcare diagnostics, credit risk assessment, and legal decision support systems.
+
 ---
 
-## 2. Example Dataset: Predicting Outdoor Enjoyment
+## 2. Trees Building Process
+
+Classification trees work by recursively partitioning the feature space into regions that are as **pure** as possible with respect to the target classes. 
+
+The algorithm starts with the entire dataset at the root node and asks: **Which feature and what split point will best separate our classes?** It evaluates all possible splits across all features and selects the one that maximizes the separation between classes. This process repeats for each resulting child node until stopping criteria are met.
+
+The key challenge is defining what **best separation** means mathematically. We need quantitative measures of impurity or disorder in the nodes. A node containing only data points from a single class are pure and desirable. A node with a 50-50 mix of both classes is impure and needs further splitting.
+
+
+## 3. Example Dataset: Predicting Outdoor Enjoyment
 
 Consider the following dataset for predicting whether a person enjoyed an outdoor activity based on **Weather (Outlook)** and **Temperature**.
 
@@ -41,7 +51,7 @@ Our goal is to learn a set of decision rules that can correctly predict “Enjoy
 
 ---
 
-## 3. Entropy – Measuring Impurity
+## 4. Entropy – Measuring Impurity
 
 **Entropy** measures the amount of disorder or impurity in a dataset. It quantifies how mixed the class labels are within a node.
 
@@ -75,7 +85,7 @@ This means the initial dataset still contains uncertainty — it’s not fully p
 
 ---
 
-## 4. Information Gain – Choosing the Best Split
+## 5. Information Gain – Choosing the Best Split
 
 When a dataset is split on a feature, we expect to reduce uncertainty.  
 The **Information Gain (IG)** quantifies this reduction:
@@ -161,7 +171,7 @@ The resulting tree after split looks like the following:
 
 ---
 
-## 5. Gini Impurity (Alternative Criterion)
+## 6. Gini Impurity (Alternative Criterion)
 
 Another popular impurity measure is **Gini impurity**, defined as:
 
@@ -183,7 +193,7 @@ Gini impurity is computationally faster and is commonly used in libraries such a
 
 ---
 
-## 6. Training a Decision Tree
+## 7. Training a Decision Tree
 
 A Decision Tree grows recursively by:
 1. Calculating impurity (Entropy or Gini) at the root.
@@ -197,14 +207,14 @@ This recursive partitioning produces a **tree structure** that can make predicti
 
 ---
 
-## 7. Decision Boundaries and Nonlinearity
+## 8. Decision Boundaries and Nonlinearity
 
 Decision Trees can model **non-linear relationships**.  
 Even if the true boundary is circular or irregular, trees can approximate it by creating multiple axis-aligned splits. This makes them flexible but also prone to overfitting if not regularized.
 
 ---
 
-## 8. Cost Function of a Decision Tree
+## 9. Cost Function of a Decision Tree
 
 At any point, the objective function for the decision tree can be defined as minimizing the weighted impurity of all nodes:
 
@@ -216,22 +226,39 @@ where $H_m$ can represent entropy or Gini impurity at node $m$.
 
 ---
 
-## 9. Example Final Tree for the Classification Problem
+## 10. Example Final Tree for the Classification Problem
 
 
 Each branch corresponds to a decision rule derived from maximizing information gain at every step.
 
+```
+
+       [Temperature?]
+           |
+    -----------------
+    |       |       |
+   Hot    Mild    Cool
+    |     (YES)     |
+ [Weather?]     [Weather?]
+    |               |
+  -----          ---------
+  |   |          |   |   |
+Sunny Overcast  Sun Over Rainy
+(NO)  (YES)     (YES)(YES) [1Y,1N]
+
+```
+
 ---
 
-## 10. Regression Using Decision Trees
+## 11. Regression Using Decision Trees
 
 While classification trees predict **discrete labels**, **regression trees** predict **continuous numerical values** such as prices, salaries, or temperatures.
 
-The key idea is the same — recursively split the feature space — but the measure of impurity changes from **entropy** to **Mean Squared Error (MSE)**.
+The key idea is the same — recursively split the feature space — but the measure of impurity changes from **entropy** to **Variance** or **Mean Squared Error (MSE)**.
 
 ---
 
-### Dataset
+### Example Dataset
 
 We use the following small dataset of house prices:
 
@@ -255,6 +282,8 @@ A regression tree tries to minimize the **Mean Squared Error (MSE)** within each
 \text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_i - \bar{y})^2
 
 ```
+where $y$ is the target value and $\bar{y}$ is the mean value of $N$ data points.
+
 
 At each split, the algorithm chooses the threshold that minimizes the **Weighted MSE**:
 
