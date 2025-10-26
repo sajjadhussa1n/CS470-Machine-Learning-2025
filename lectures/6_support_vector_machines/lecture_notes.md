@@ -10,7 +10,7 @@ Support Vector Machines (SVMs) are supervised learning models that find the best
 
 The **intuition** is straightforward: among all possible boundaries that separate the classes, we want the one that keeps the largest **safety buffer** between the two. This margin-based approach gives SVMs strong generalization capabilities.
 
-![Basic linear separation example](./images/svm_basic.png)
+<img src="./images/svm_basic.png" alt="Maximum_Margin_Classifier" width="500"/>
 *Figure: Example of Binary Classification using Mamimum Margin*
 
 ## 2. Why Maximize the Margin?
