@@ -61,11 +61,17 @@ The Soft Margin SVM modifies the optimization problem by introducing slack varia
 
 This is controlled by a regularization parameter **$C$**, leading to the following optimization:
 
+```math
+\min_{w, b, \xi} \ \frac{1}{2} \| w \|^2 + C \sum_{i=1}^{N} \xi_i 
+
+\text{ subject to } \quad y_i (w^\top x_i + b) \ge 1 - \xi_i, \quad \xi_i \ge 0
+```
+
 
 A large value of **$C$** imposes a heavy penalty on misclassification, resulting in a narrow margin and potentially overfitting. A small **$C$** allows more flexibility (wider margin) but might underfit.
 
 
-<img src="./images/C_effect.png" alt="effect_of_C" width="500"/>
+<img src="./images/C_effect.png" alt="effect_of_C" width="700"/>
 Figure: Effect of C on margin width and misclassification
 
 ## 6. Non-Linear SVMs
@@ -75,14 +81,13 @@ Many real-world problems cannot be separated by a straight line. For example, ci
 In such cases, the SVM can still be applied by mapping the data to a higher-dimensional feature space where linear separation becomes possible. This process is known as **feature mapping** or **non-linear transformation**.
 
 
-(Figure: Non-linear separable data — nonlinear_data.png)
 <img src="./images/nonlinear_data.png" alt="non_linear_data" width="500"/>
 Figure: Non-linear seperable data example
 
 For instance, mapping a 1D feature x to a 2D feature vector $(x, x^2)$ allows us to separate classes that were previously inseparable in 1D space.
 
 
-<img src="./images/poly_example.png" alt="poly_example" width="500"/>
+<img src="./images/poly_example.png" alt="poly_example" width="700"/>
 Figure: Feature Mapping from 1D to 2D for classification
 
 ## 7. The Kernel Trick
@@ -93,19 +98,29 @@ Common kernel functions include:
 
 Linear Kernel:
 
+```math
+K(x, x') = x^\top x'
+```
 
 
 Polynomial Kernel:
 
+```math
+K(x, x') = (x^\top x' + 1)^d
+```
 
 
 Radial Basis Function (RBF) Kernel:
 
+```math
+K(x, x') = \exp(-\gamma \| x - x' \|^2)
+```
+
 
 Here, $\gamma$ (gamma) determines how much influence a single training point has — small $\gamma$ values produce smoother decision boundaries, while large $\gamma$ values create more complex, tighter boundaries.
 
-(Figure: Illustration of RBF similarity mapping — rbf_similarity.png)
-<img src="./images/rbf_similarity.png" alt="rbf_kernel" width="500"/>
+
+<img src="./images/rbf_similarity.png" alt="rbf_kernel" width="700"/>
 Figure: Illustration of RBF similarity mapping for classification
 
 ## 8. SVM for Regression (SVR)
@@ -114,7 +129,9 @@ Support Vector Regression (SVR) applies the same geometric principles of SVM to 
 
 The core idea is the **$\epsilon$-insensitive tube**: errors smaller than $\epsilon$ are ignored, and only deviations beyond this tube are penalized. Mathematically, the optimization problem becomes:
 
-(Figure: $\epsilon$-insensitive tube in SVR — svr_basic.png)
+
+<img src="./images/svr_basic.png" alt="svr_example" width="500"/>
+Figure: Example of Regression using SVR
 
 
 The parameters $\epsilon$ and **$C$** work together:
