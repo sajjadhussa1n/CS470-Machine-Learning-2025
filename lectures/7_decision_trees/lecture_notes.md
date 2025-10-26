@@ -474,7 +474,7 @@ Thus, prediction for new data involves traversing the tree based on the feature 
 
 ---
 
-## 11. Summary
+## 12. Summary
 
 - Decision Trees classify data by splitting the feature space based on impurity reduction.
 - For classification, impurity is measured using **Entropy** or **Gini**.
