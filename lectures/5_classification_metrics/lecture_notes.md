@@ -10,9 +10,9 @@ Evaluating the performance of a machine learning model is as important as buildi
 
 Accuracy is defined as:
 
-\[
+```math
 \text{Accuracy} = \frac{\text{Number of Correct Predictions}}{\text{Total Number of Predictions}} = \frac{TP + TN}{TP + TN + FP + FN}
-\]
+```
 
 where **TP**, **TN**, **FP**, and **FN** represent True Positives, True Negatives, False Positives, and False Negatives respectively.
 
@@ -67,9 +67,9 @@ High precision means the model makes few false positive errors.
 
 Recall (also known as **Sensitivity** or **True Positive Rate**) measures how many of the actual positives were correctly identified:
 
-\[
+```math
 \text{Recall} = \frac{TP}{TP + FN}
-\]
+```
 
 It answers the question:  
 > “Of all the actual positives, how many did the model detect?”
@@ -113,9 +113,9 @@ The precision–recall curve is especially useful for **imbalanced datasets**, w
 Sometimes, we need a single metric that combines both precision and recall.  
 The **F1-score** provides such a harmonic mean:
 
-\[
+```math
 F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-\]
+```
 
 The harmonic mean penalizes extreme values — a classifier with high precision but low recall (or vice versa) will have a modest F1-score.  
 This makes the F1-score particularly useful when you need to balance between identifying positives and avoiding false alarms.
@@ -129,13 +129,16 @@ While Precision–Recall curves are useful for imbalanced data, the **ROC Curve*
 The ROC curve plots:
 
 - **True Positive Rate (TPR)** on the y-axis  
-  \[
+  
+  ```math
   TPR = \frac{TP}{TP + FN}
-  \]
-- **False Positive Rate (FPR)** on the x-axis  
-  \[
+  ```
+- 
+**False Positive Rate (FPR)** on the x-axis  
+
+```math
   FPR = \frac{FP}{FP + TN}
-  \]
+```
 
 <img src="./images/roc_auc_comparison.png" alt="AUC-ROC" width="500"/>
 
