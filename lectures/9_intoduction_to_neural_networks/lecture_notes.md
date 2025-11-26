@@ -28,6 +28,16 @@ The core principle borrowed from biological neurons is the "weighted sum and thr
 ### McCulloch-Pitts Neuron (1943)
 The first mathematical model of a neuron was developed by Warren McCulloch (a neuroscientist) and Walter Pitts (a logician). This pioneering work laid the foundation for artificial neural networks.
 
+```math
+% McCulloch-Pitts Neuron
+Output = 
+\begin{cases}
+1 & \text{if } \sum_{i=1}^n w_i x_i \geq \theta \\
+0 & \text{otherwise}
+\end{cases}
+
+```
+
 **Key Characteristics:**
 - Uses binary inputs and outputs (0 or 1)
 - Implements a simple threshold activation function
