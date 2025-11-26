@@ -130,9 +130,12 @@ The perceptron marked a significant advancement by introducing learning capabili
 
 ```math
 
-% Perceptron Forward Pass
-z = \sum_{i=1}^n w_i x_i + b
+\begin{align}
+
+z = \sum_{i=1}^n w_i x_i + b \\
 \text{output} = \text{step}(z)
+
+\end{align}
 
 ```
 
@@ -236,31 +239,38 @@ z_4^{[1]} &= w_{41}^{[1]}x_1 + w_{42}^{[1]}x_2 + w_{43}^{[1]}x_3 + b_4^{[1]}
 Apply an activation function, such as ```ReLU``` to each hidden neuron
 
 ```math
+\begin{align}
 
 a_1^{[1]} &= \max(0, z_1^{[1]}) \\
 a_2^{[1]} &= \max(0, z_2^{[1]}) \\
 a_3^{[1]} &= \max(0, z_3^{[1]}) \\
 a_4^{[1]} &= \max(0, z_4^{[1]})
 
+\end{align}
+
 ```
 
 **Layer 2 (Hidden to Output):**
 
+Likewise, the weighted sum of hidden layer activations is computed followed by an appropriate activation function, more on this later, that predicts the output of the network 
+
 ```math
 
-z_1^{[2]} = \sum_{j=1}^{4} w_{1j}^{[2]} a_j^{[1]} + b_1^{[2]} 
-a_1^{[2]} = f_{\text{output}}(z_1+^{[2]})
+\begin{align}
+z_1^{[2]} &= w_{11}^{[2]}a_1^{[1]} + w_{12}^{[2]}a_2^{[1]} + w_{13}^{[2]}a_3^{[1]} + w_{14}^{[2]}a_4^{[1]} + b_1^{[2]} \\
+a_1^{[2]} &= f_{output}(z_1^{[2]})
+\end{align}
 
 ```
 
 **Matrix Form (Efficient Computation):**
 
 ```math
-
-\mathbf{Z}^{[1]} = \mathbf{W}^{[1]}\mathbf{X} + \mathbf{b}^{[1]}
-\mathbf{A}^{[1]} = \text{ReLU}(\mathbf{Z}^{[1]})
-\mathbf{Z}^{[2]} = \mathbf{W}^{[2]}\mathbf{A}^{[1]} + \mathbf{b}^{[2]}
-\mathbf{A}^{[2]} = f_{\text{output}}(\mathbf{Z}^{[2]})
+\begin{align}
+\mathbf{Z}^{[1]} = \mathbf{W}^{[1]}\mathbf{X} + \mathbf{b}^{[1]} \\
+\mathbf{A}^{[1]} = \text{ReLU}(\mathbf{Z}^{[1]}) \\
+\mathbf{Z}^{[2]} = \mathbf{W}^{[2]}\mathbf{A}^{[1]} + \mathbf{b}^{[2]} \\
+\mathbf{A}^{[2]} = f_{output}(\mathbf{Z}^{[2]})
 
 ```
 
@@ -396,6 +406,8 @@ Backpropagation is the fundamental algorithm that enables neural networks to lea
 2. **Loss Calculation**: Measure how wrong the predictions are
 3. **Backward Pass**: Calculate gradients using chain rule
 4. **Weight Update**: Adjust weights to reduce loss
+
+```A complete step-by-step example of the backpropagation algorithm is provided in the lecture slides.```
 
 **Key Insight:**
 Backpropagation efficiently computes how much each weight contributes to the total error by working backward through the network, reusing computations to avoid redundant calculations.
