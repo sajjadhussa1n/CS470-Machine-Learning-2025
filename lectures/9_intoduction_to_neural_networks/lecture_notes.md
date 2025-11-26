@@ -57,13 +57,45 @@ The McCulloch-Pitts neuron could implement basic logical operations:
 - Requires both inputs to be 1 for output to be 1
 - Implemented with weights of +1 and threshold of 2
 
+```math
+
+% AND Gate
+y = 
+\begin{cases}
+1 & \text{if } x_1 + x_2 \geq 2 \\
+0 & \text{otherwise}
+\end{cases}
+
+```
+
 **OR Gate:**
 - Requires at least one input to be 1 for output to be 1
 - Implemented with weights of +1 and threshold of 1
 
+```math
+
+% OR Gate
+y = 
+\begin{cases}
+1 & \text{if } x_1 + x_2 \geq 1 \\
+0 & \text{otherwise}
+\end{cases}
+```
+
 **NOT Gate:**
 - Inverts the input signal
 - Uses inhibitory connection with weight of -1 and threshold of 0
+
+```math
+
+% NOT Gate
+y = 
+\begin{cases}
+1 & \text{if } -x \geq 0 \\
+0 & \text{otherwise}
+\end{cases}
+
+```
 
 ### The XOR Problem
 A critical limitation emerged with the Exclusive OR (XOR) function:
@@ -96,6 +128,14 @@ The perceptron marked a significant advancement by introducing learning capabili
 - Summation unit that computes weighted sum plus bias
 - Step function that produces binary output based on threshold
 
+```math
+
+% Perceptron Forward Pass
+z = \sum_{i=1}^n w_i x_i + b
+\text{output} = \text{step}(z)
+
+```
+
 ### Perceptron Learning Algorithm
 The perceptron can learn from examples through an iterative process:
 
@@ -105,11 +145,20 @@ The perceptron can learn from examples through an iterative process:
 4. **Weight Update**: Adjust weights proportionally to the error and inputs
 5. **Bias Update**: Adjust bias term similarly
 
-The learning rate controls how quickly the weights change during training. Typical values range from 0.1 to 0.01.
+```math
+
+% Perceptron Learning Algorithm
+\text{error} = y_{\text{true}} - y_{\text{pred}}
+w_i^{\text{new}} = w_i^{\text{old}} + \eta \cdot \text{error} \cdot x_i
+b^{\text{new}} = b^{\text{old}} + \eta \cdot \text{error}
+
+```
+
+The learning rate $\eta$ controls how quickly the weights change during training. Typical values range from 0.1 to 0.01.
 
 **Capabilities:**
 - Can learn AND, OR, and NOT gates
-- Creates linear decision boundaries
+- Creates linear decision boundaries $w_1x_1 + w_2x_2 + b = 0$
 - Works for any linearly separable problem
 
 ## AI Winters
@@ -156,9 +205,35 @@ Stacking multiple layers enables the network to learn complex, hierarchical feat
 
 **Mathematical Operations:**
 The forward pass through a multi-layer network involves:
-1. Computing weighted sums at each layer
-2. Applying activation functions to introduce non-linearity
-3. Propagating results to subsequent layers
+
+**Layer 1 (Input to Hidden):**
+
+```math
+
+z_j^{[1]} = \sum_{i=1}^{3} w_{ji}^{[1]} x_i + b_j^{[1]} \quad \text{for } j=1,\dots,4
+a_j^{[1]} = \text{ReLU}(z_j^{[1]})
+
+```
+
+**Layer 2 (Hidden to Output):**
+
+```math
+
+z_1^{[2]} = \sum_{j=1}^{4} w_{1j}^{[2]} a_j^{[1]} + b_1^{[2]} 
+a_1^{[2]} = f_{\text{output}}(z_1+^{[2]})
+
+```
+
+**Matrix Form (Efficient Computation):**
+
+```math
+
+\mathbf{Z}^{[1]} = \mathbf{W}^{[1]}\mathbf{X} + \mathbf{b}^{[1]}
+\mathbf{A}^{[1]} = \text{ReLU}(\mathbf{Z}^{[1]})
+\mathbf{Z}^{[2]} = \mathbf{W}^{[2]}\mathbf{A}^{[1]} + \mathbf{b}^{[2]}
+\mathbf{A}^{[2]} = f_{\text{output}}(\mathbf{Z}^{[2]})
+
+```
 
 ## Activation Functions
 
@@ -167,6 +242,12 @@ Activation functions are crucial for enabling deep learning capabilities.
 
 **Critical Mathematical Insight:**
 Without non-linear activation functions, any deep network - no matter how many layers - collapses to a single linear layer. This means the network would have no more expressive power than simple linear regression and couldn't learn complex relationships in data.
+
+```math
+
+\mathbf{a}^{[2]} = \mathbf{W}^{[2]}(\mathbf{W}^{[1]}\mathbf{x} + \mathbf{b}^{[1]}) + \mathbf{b}^{[2]} = (\mathbf{W}^{[2]}\mathbf{W}^{[1]})\mathbf{x} + (\mathbf{W}^{[2]}\mathbf{b}^{[1]} + \mathbf{b}^{[2]}) = \mathbf{W}'\mathbf{x} + \mathbf{b}'
+
+```
 
 **The Power of Non-Linearity:**
 Non-linear activation functions enable:
@@ -177,38 +258,101 @@ Non-linear activation functions enable:
 ### Common Activation Functions
 
 **Sigmoid:**
+
+```math
+
+\sigma(z) = \frac{1}{1 + e^{-z}}
+
+```
+
 - Output range: (0, 1)
 - Smooth gradient
 - Suffers from vanishing gradient problem in deep networks
 
 **Hyperbolic Tangent (tanh):**
+
+```math
+
+\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}
+
+```
+
 - Output range: (-1, 1)
 - Zero-centered outputs
 - Still susceptible to vanishing gradients
 
 **Rectified Linear Unit (ReLU):**
+
+```math
+
+\text{ReLU}(z) = \max(0, z)
+
+```
+
 - Output: max(0, input)
 - Computationally efficient
 - Avoids vanishing gradient for positive inputs
 - Most commonly used in modern networks
 
+**ReLU Derivative:**
+
+```math
+
+% ReLU Derivative
+\text{ReLU}'(z) = 
+\begin{cases}
+1 & \text{if } z > 0 \\
+0 & \text{if } z \leq 0
+\end{cases}
+
+```
+
 ### Output Layer Activation Functions
 The choice of output activation depends on the problem type:
 
 **Linear/No Activation:**
+
+
+```math
+
+a = z
+
+```
+
 - For regression problems predicting any real value
 - Applications: house prices, stock prices, temperature
 
 **ReLU:**
+
+```math
+
+a = \max(0, z)
+
+```
+
 - For regression predicting non-negative values
 - Applications: age, salary, distance measurements
 
 **Sigmoid:**
+
+```math
+
+a = \sigma(z) = \frac{1}{1 + e^{-z}}
+
+```
+
 - For binary classification problems
 - Output represents probability
 - Applications: spam detection, medical diagnosis
 
 **Softmax:**
+
+```math
+
+a_k = \frac{e^{z_k}}{\sum_{j=1}^{C} e^{z_j}}
+
+```
+
 - For multi-class classification
 - Outputs form a probability distribution over classes
 - Applications: digit recognition, object classification
