@@ -29,6 +29,7 @@ The core principle borrowed from biological neurons is the "weighted sum and thr
 The first mathematical model of a neuron was developed by Warren McCulloch (a neuroscientist) and Walter Pitts (a logician). This pioneering work laid the foundation for artificial neural networks.
 
 ```math
+
 % McCulloch-Pitts Neuron
 Output = 
 \begin{cases}
