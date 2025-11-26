@@ -16,12 +16,18 @@
 ### The Biological Neuron
 The human brain serves as the fundamental inspiration for artificial neural networks. Biological neurons consist of several key components. Dendrites act as input receptors that receive electrical signals from other neurons. The cell body, or soma, functions as the processing unit that sums all incoming signals. The axon serves as the output cable that transmits signals to other neurons. Synapses are the connections between neurons that can strengthen or weaken over time, allowing for learning and adaptation in biological systems.
 
+<img src="./images/biological_neuron.png" alt="Biological Neuron" width="500"/>
+Figure: Components of a Biological Neuron
+
 The core principle borrowed from biological neurons is the weighted sum and threshold mechanism. This means that some neural connections are stronger than others, giving their signals more influence on whether the neuron fires or remains inactive. This biological concept directly inspired the mathematical operations performed by artificial neurons in neural networks.
 
 ## Early Neural Models
 
 ### McCulloch-Pitts Neuron (1943)
 The McCulloch-Pitts neuron represents the first mathematical model of a biological neuron, developed by neuroscientist Warren McCulloch and logician Walter Pitts. This pioneering work established the foundational concepts for artificial neural networks. The model uses binary inputs and outputs, processing information as either 0 or 1 values. It implements a simple threshold activation function that determines when the neuron should fire based on input signals. The system features fixed weights with excitatory connections represented by +1 and inhibitory connections by -1. All neurons operate synchronously, processing information in coordinated time steps. Despite its simplicity, this model can compute basic logical functions that form the building blocks of more complex computations.
+
+<img src="./images/pitts_model.png" alt="Pitts" width="500"/>
+Figure: Mcculloch-Pitts Neuron Model
 
 ```math
 
@@ -87,6 +93,9 @@ y =
 ### The XOR Problem
 A critical limitation emerged when attempting to implement the Exclusive OR (XOR) function using single-layer networks. The XOR function produces distinctive output patterns where the output is active only when the inputs differ from each other. The fundamental problem arises because no single straight line can separate the different output classes in the XOR problem space. This geometric limitation means that single-layer perceptrons cannot learn or represent the XOR function, as they can only solve problems that are linearly separable. The solution to this limitation requires multiple layers of processing, where a hidden layer computes intermediate functions that are then combined to produce the final XOR output.
 
+<img src="./images/xor-problem.png" alt="XOR" width="300"/>
+Figure: The XOR Problem
+
 **XOR Truth Table:**
 - (0,0) → 0
 - (0,1) → 1
@@ -98,6 +107,9 @@ A critical limitation emerged when attempting to implement the Exclusive OR (XOR
 
 ### Frank Rosenblatt's Perceptron (1958)
 The perceptron introduced revolutionary learning capabilities to artificial neurons, marking a significant advancement over earlier models. This was the first learnable artificial neuron model that could adapt its behavior based on experience. Unlike previous models, it uses real-valued inputs and weights, allowing for more nuanced representations of information. The inclusion of a bias term provides additional flexibility in decision-making processes. The model employs a step function activation that produces binary outputs based on whether the weighted sum exceeds a threshold.
+
+<img src="./images/rosenblatt.png" alt="Rosenblatt" width="500"/>
+Figure: Frank Rosenblatt's Perceptron Model
 
 The architecture consists of multiple input nodes with associated weights that determine the importance of each input. A summation unit computes the weighted sum of inputs plus a bias term. Finally, a step function processes this sum to produce the final binary output decision.
 
@@ -135,6 +147,9 @@ The impact of these challenges was substantial. Funding and interest in neural n
 
 ### Multi-Layer Perceptrons (MLPs)
 Multi-layer networks provided the architectural solution to the limitations of single-layer perceptrons. The network architecture organizes processing into distinct layers with specialized functions. The input layer receives and distributes the raw data to the network. Hidden layers perform intermediate processing and feature extraction, transforming inputs into more useful representations. The output layer produces the final prediction or classification based on the processed information.
+
+<img src="./images/mlp.png" alt="MLP" width="500"/>
+Figure: Multi-Layer Perceptrons (MLPs) Network
 
 The key insight behind multi-layer networks is that stacking multiple layers enables learning of complex, hierarchical features. Each layer builds upon the representations learned by previous layers, allowing the network to model increasingly sophisticated patterns through this compositional approach.
 
@@ -258,6 +273,9 @@ The Rectified Linear Unit (ReLU) has become the most commonly used activation fu
 
 ```
 
+<img src="./images/activations.png" alt="Activations" width="500"/>
+Figure: Common Activation Functions
+
 ### Output Layer Activation Functions
 The choice of output activation function depends entirely on the specific problem type being solved.
 
@@ -309,6 +327,9 @@ The key insight behind backpropagation's efficiency is that it computes how much
 2. **Loss Calculation**: Measure how wrong the predictions are
 3. **Backward Pass**: Calculate gradients using chain rule
 4. **Weight Update**: Adjust weights to reduce loss
+
+<img src="./images/bpn.png" alt="Training" width="500"/>
+Figure: Neural Networks Training Loop - Repeat Until Convergence
 
 ```A complete step-by-step example of the backpropagation algorithm is provided in the lecture slides.```
 
