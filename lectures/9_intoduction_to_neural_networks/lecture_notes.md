@@ -328,7 +328,7 @@ The key insight behind backpropagation's efficiency is that it computes how much
 3. **Backward Pass**: Calculate gradients using chain rule
 4. **Weight Update**: Adjust weights to reduce loss
 
-<img src="./images/bpn.png" alt="Training" width="500"/>
+<img src="./images/bpn.png" alt="Training" width="300"/>
 Figure: Neural Networks Training Loop - Repeat Until Convergence
 
 ```A complete step-by-step example of the backpropagation algorithm is provided in the lecture slides.```
