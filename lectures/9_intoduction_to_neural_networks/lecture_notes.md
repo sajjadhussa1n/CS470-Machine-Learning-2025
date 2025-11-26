@@ -142,14 +142,25 @@ The perceptron can learn from examples through an iterative process:
 1. **Initialization**: Start with small random weights and bias
 2. **Prediction**: For each training example, compute the output
 3. **Error Calculation**: Compare prediction with true label
+
+```math
+
+\text{error} = y_{\text{true}} - y_{\text{pred}}
+
+```
+
 4. **Weight Update**: Adjust weights proportionally to the error and inputs
+
+```math
+
+w_i^{\text{new}} = w_i^{\text{old}} + \eta \cdot \text{error} \cdot x_i
+
+```
+
 5. **Bias Update**: Adjust bias term similarly
 
 ```math
 
-% Perceptron Learning Algorithm
-\text{error} = y_{\text{true}} - y_{\text{pred}}
-w_i^{\text{new}} = w_i^{\text{old}} + \eta \cdot \text{error} \cdot x_i
 b^{\text{new}} = b^{\text{old}} + \eta \cdot \text{error}
 
 ```
@@ -208,10 +219,25 @@ The forward pass through a multi-layer network involves:
 
 **Layer 1 (Input to Hidden):**
 
+Compute weighted sum of inputs to hidden layer
+
 ```math
 
-z_j^{[1]} = \sum_{i=1}^{3} w_{ji}^{[1]} x_i + b_j^{[1]} \quad \text{for } j=1,\dots,4
-a_j^{[1]} = \text{ReLU}(z_j^{[1]})
+z_1^{[1]} &= w_{11}^{[1]}x_1 + w_{12}^{[1]}x_2 + w_{13}^{[1]}x_3 + b_1^{[1]} \\
+z_2^{[1]} &= w_{21}^{[1]}x_1 + w_{22}^{[1]}x_2 + w_{23}^{[1]}x_3 + b_2^{[1]} \\
+z_3^{[1]} &= w_{31}^{[1]}x_1 + w_{32}^{[1]}x_2 + w_{33}^{[1]}x_3 + b_3^{[1]} \\
+z_4^{[1]} &= w_{41}^{[1]}x_1 + w_{42}^{[1]}x_2 + w_{43}^{[1]}x_3 + b_4^{[1]}
+
+```
+
+Apply an activation function, such as ```ReLU``` to each hidden neuron
+
+```math
+
+a_1^{[1]} &= \max(0, z_1^{[1]}) \\
+a_2^{[1]} &= \max(0, z_2^{[1]}) \\
+a_3^{[1]} &= \max(0, z_3^{[1]}) \\
+a_4^{[1]} &= \max(0, z_4^{[1]})
 
 ```
 
